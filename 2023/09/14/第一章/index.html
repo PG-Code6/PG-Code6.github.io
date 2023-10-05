@@ -1,0 +1,820 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>数据库系统概论第一章的学习总结 | 戒欲</title><meta name="author" content="PG-Code"><meta name="copyright" content="PG-Code"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="1、数据库系统概述1.1、四个基本概念1.数据 数据是数据库中储存的基本对象 数据的定义 描述事物的符号记录   数据的种类 数字、文字、图形、图像、音频、视频等    2.数据库 数据库的定义 数据库（Database，简称DB）是长期存储在计算机内，有组织的、可共享的大量数据的集合   数据库的基本特征 数据库按一定的数据模型组织、描述和储存 具有较小的冗（rǒng）余度 较高的数据独立性 易">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库系统概论第一章的学习总结">
+<meta property="og:url" content="http://example.com/2023/09/14/%E7%AC%AC%E4%B8%80%E7%AB%A0/index.html">
+<meta property="og:site_name" content="戒欲">
+<meta property="og:description" content="1、数据库系统概述1.1、四个基本概念1.数据 数据是数据库中储存的基本对象 数据的定义 描述事物的符号记录   数据的种类 数字、文字、图形、图像、音频、视频等    2.数据库 数据库的定义 数据库（Database，简称DB）是长期存储在计算机内，有组织的、可共享的大量数据的集合   数据库的基本特征 数据库按一定的数据模型组织、描述和储存 具有较小的冗（rǒng）余度 较高的数据独立性 易">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/head.jpg">
+<meta property="article:published_time" content="2023-09-14T06:47:00.003Z">
+<meta property="article:modified_time" content="2023-09-14T07:03:14.005Z">
+<meta property="article:author" content="PG-Code">
+<meta property="article:tag" content="初识数据库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/head.jpg"><link rel="shortcut icon" href="/images/log.png"><link rel="canonical" href="http://example.com/2023/09/14/%E7%AC%AC%E4%B8%80%E7%AB%A0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":-1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '数据库系统概论第一章的学习总结',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-09-14 15:03:14'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 灵魂</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-book-open"></i><span> 文案</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="戒欲"><span class="site-name">戒欲</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 灵魂</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-book-open"></i><span> 文案</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">数据库系统概论第一章的学习总结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-14T06:47:00.003Z" title="发表于 2023-09-14 14:47:00">2023-09-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-09-14T07:03:14.005Z" title="更新于 2023-09-14 15:03:14">2023-09-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/">数据库系统概论</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="数据库系统概论第一章的学习总结"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2023/09/14/%E7%AC%AC%E4%B8%80%E7%AB%A0/#post-comment"><span class="waline-comment-count" data-path="/2023/09/14/%E7%AC%AC%E4%B8%80%E7%AB%A0/"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1、数据库系统概述"><a href="#1、数据库系统概述" class="headerlink" title="1、数据库系统概述"></a>1、数据库系统概述</h1><h2 id="1-1、四个基本概念"><a href="#1-1、四个基本概念" class="headerlink" title="1.1、四个基本概念"></a>1.1、四个基本概念</h2><h3 id="1-数据"><a href="#1-数据" class="headerlink" title="1.数据"></a>1.数据</h3><ul>
+<li>数据是数据库中储存的基本对象</li>
+<li>数据的定义<ul>
+<li>描述事物的符号记录</li>
+</ul>
+</li>
+<li>数据的种类<ul>
+<li>数字、文字、图形、图像、音频、视频等</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-数据库"><a href="#2-数据库" class="headerlink" title="2.数据库"></a>2.数据库</h3><ul>
+<li>数据库的定义<ul>
+<li>数据库（Database，简称DB）是长期存储在计算机内，有组织的、可共享的大量数据的集合</li>
+</ul>
+</li>
+<li>数据库的基本特征<ul>
+<li>数据库按一定的数据模型组织、描述和储存</li>
+<li>具有较小的冗（rǒng）余度</li>
+<li>较高的数据独立性</li>
+<li>易扩展性</li>
+<li>可为各种用户共享</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-数据库管理系统"><a href="#3-数据库管理系统" class="headerlink" title="3.数据库管理系统"></a>3.数据库管理系统</h3><ul>
+<li><p>什么是数据库管理系统</p>
+<ul>
+<li>位于用户与操作系统之间的一层数据管理软件</li>
+<li>是基础软件，是一个大型复杂的软件系统</li>
+</ul>
+</li>
+<li><p>数据库管理系统的用途</p>
+<ul>
+<li>科学地组织和存储数据、高效地获取和维护数据</li>
+</ul>
+</li>
+<li><p>数据库管理系统的主要功能</p>
+<ul>
+<li><p>数据定义功能</p>
+<ul>
+<li>提供数据定义语言（DDL）</li>
+<li>定义数据库中的数据对象</li>
+</ul>
+</li>
+<li><p>数据组织、存储和管理</p>
+<ul>
+<li>分类组织、存储和管理各种数据</li>
+<li>确定组织数据的文件结构和存取方式</li>
+<li>实现数据之间的联系</li>
+<li>提供多种存取方法提高存取效率</li>
+</ul>
+</li>
+<li><p>数据操纵功能</p>
+<ul>
+<li>提供数据操纵语言（DML）</li>
+<li>实现对数据库的基本操纵（插入、删除、查询和修改）</li>
+</ul>
+</li>
+<li><p>数据库事务管理和运行管理</p>
+<ul>
+<li>数据库在建立、运行和维护时由数据库管理系统统一管理和控制</li>
+<li>保证数据的安全性、完整性、多用户对数据的并发使用</li>
+<li>发生故障后的系统恢复</li>
+</ul>
+</li>
+<li><p>数据库的建立和维护功能</p>
+<ul>
+<li>数据库初始数据的装载和转换</li>
+<li>数据库转储、恢复功能</li>
+<li>数据库的重组织</li>
+<li>性能监视、分析等</li>
+</ul>
+</li>
+<li><p>其他功能</p>
+<ul>
+<li>数据库管理系统与网络中其他软件系统的通信</li>
+<li>数据库管理系统与系统之间的数据转换</li>
+<li>异构数据库之间的互访和互操作</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-数据库系统"><a href="#4-数据库系统" class="headerlink" title="4.数据库系统"></a>4.数据库系统</h3><ul>
+<li>数据库系统（Database System,简称DBS）</li>
+<li>数据库系统的构成<ul>
+<li>数据库</li>
+<li>数据库管理系统</li>
+<li>应用程序</li>
+<li>数据库管理员</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-2、数据管理技术的产生和发展"><a href="#1-2、数据管理技术的产生和发展" class="headerlink" title="1.2、数据管理技术的产生和发展"></a>1.2、数据管理技术的产生和发展</h2><h4 id="1-什么是数据管理"><a href="#1-什么是数据管理" class="headerlink" title="1.什么是数据管理"></a>1.什么是数据管理</h4><ul>
+<li>对数据进行分类、组织、编码、存储、检索和维护</li>
+<li>数据处理的中心问题</li>
+</ul>
+<h4 id="2-数据管理技术的发展过程"><a href="#2-数据管理技术的发展过程" class="headerlink" title="2.数据管理技术的发展过程"></a>2.数据管理技术的发展过程</h4><h5 id="1-人工管理阶段（20世纪50年代中之前）"><a href="#1-人工管理阶段（20世纪50年代中之前）" class="headerlink" title="1.人工管理阶段（20世纪50年代中之前）"></a>1.人工管理阶段（20世纪50年代中之前）</h5><ul>
+<li>特点：<ol>
+<li>数据不保存</li>
+<li>应用程序管理数据</li>
+<li>数据不共享，冗余度极大</li>
+<li>数据不具有独立性</li>
+</ol>
+</li>
+</ul>
+<h5 id="2-文件管理阶段（20世纪50年代末–60年代中）"><a href="#2-文件管理阶段（20世纪50年代末–60年代中）" class="headerlink" title="2.文件管理阶段（20世纪50年代末–60年代中）"></a>2.文件管理阶段（20世纪50年代末–60年代中）</h5><ul>
+<li>特点：<ol>
+<li>数据可以长期保存</li>
+<li>由文件系统管理数据</li>
+<li>数据共享性差，冗余度大</li>
+<li>数据独立性差</li>
+</ol>
+</li>
+</ul>
+<h5 id="3-数据库系统阶段（20世纪60年代末–现在）"><a href="#3-数据库系统阶段（20世纪60年代末–现在）" class="headerlink" title="3.数据库系统阶段（20世纪60年代末–现在）"></a>3.数据库系统阶段（20世纪60年代末–现在）</h5><h2 id="1-3、数据库系统的特点"><a href="#1-3、数据库系统的特点" class="headerlink" title="1.3、数据库系统的特点"></a>1.3、数据库系统的特点</h2><h4 id="1-数据结构化"><a href="#1-数据结构化" class="headerlink" title="1.数据结构化"></a>1.数据结构化</h4><ul>
+<li>数据的整体结构化是数据库的主要特征之一，也是数据库系统与文件系统的本质区别</li>
+<li>整体结构化<ul>
+<li>不再仅仅针对某一个应用，而是面向全组织</li>
+<li>不仅数据内部结构化，整体是结构化的，数据之间具有联系</li>
+<li>数据记录可以变长</li>
+<li>数据的最小存取单位是数据项</li>
+</ul>
+</li>
+<li>数据的结构用数据模型描述，无需应用程序定义</li>
+</ul>
+<h4 id="2-数据的共享性高，冗余度低且易扩充"><a href="#2-数据的共享性高，冗余度低且易扩充" class="headerlink" title="2.数据的共享性高，冗余度低且易扩充"></a>2.数据的共享性高，冗余度低且易扩充</h4><ul>
+<li>数据面向整个系统，可以被多个用户、多个应用共享使用</li>
+<li>数据共享的好处<ul>
+<li>减少数据冗余，节约存储空间</li>
+<li>避免数据之间的不相容性与不一致性</li>
+<li>使系统易于扩充</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-数据独立性高"><a href="#3-数据独立性高" class="headerlink" title="3.数据独立性高"></a>3.数据独立性高</h4><ul>
+<li><h5 id="物理独立性："><a href="#物理独立性：" class="headerlink" title="物理独立性："></a>物理独立性：</h5><p>指用户的应用程序与数据库中数据的物理存储是相互独立的。当数据</p>
+<p>的物理存储改变了，应用程序不用改变。</p>
+</li>
+<li><h5 id="逻辑独立性："><a href="#逻辑独立性：" class="headerlink" title="逻辑独立性："></a>逻辑独立性：</h5><p>指用户的应用程序与数据库的逻辑结构是相互独立的。数据的逻辑结构</p>
+<p>改变了，应用程序不用改变。</p>
+</li>
+<li><p>数据独立性由数据库管理系统的二级映像功能来保证。</p>
+</li>
+</ul>
+<h4 id="4-数据有数据库管理系统统一管理和控制"><a href="#4-数据有数据库管理系统统一管理和控制" class="headerlink" title="4.数据有数据库管理系统统一管理和控制"></a>4.数据有数据库管理系统统一管理和控制</h4><h5 id="数据库管理系统提供的数据控制功能"><a href="#数据库管理系统提供的数据控制功能" class="headerlink" title="数据库管理系统提供的数据控制功能"></a>数据库管理系统提供的数据控制功能</h5><ol>
+<li><p>数据的安全性保护：</p>
+<p>保护数据以防止不合法的使用造成的数据的泄漏和破坏。</p>
+</li>
+<li><p>数据的完整性检查：</p>
+<p>保证数据的正确性、有效性和相容性。</p>
+</li>
+<li><p>并发控制：</p>
+<p>对多用户的并发操作加以控制和协调，防止相互干扰而得到错误的结构。</p>
+</li>
+<li><p>数据库恢复：</p>
+<p>将数据库从错误状态恢复到某一已知的正确状态。</p>
+</li>
+</ol>
+<p>数据管理三个阶段的比较图:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/dimages/Date01/01.jpg" alt="比较图"></p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><blockquote>
+<p>数据库是长期存储在计算机内有组织、大量、共享的数据集合。它可以公股各种用户共享，具有最小冗余度和比较高的数据独立性。</p>
+<p>数据库管理系统在数据库建立、运行和维护时对数据库进行统一控制，以保证数据的完整性和安全性，并在多用户同时使用数据库时</p>
+<p>进行并发控制，在发生故障后对数据库进行恢复。数据库的出现使信息系统从以加工数据的程序为中心转向围绕共享的数据库为中心</p>
+<p>的新阶段。</p>
+</blockquote>
+<h1 id="2、数据模型"><a href="#2、数据模型" class="headerlink" title="2、数据模型"></a>2、数据模型</h1><ul>
+<li>数据模型是对现实世界数据特征的抽象。通俗地讲数据模型就是现实世界的模拟。</li>
+<li>数据模型应满足<strong>三方面</strong>要求：<ul>
+<li>能比较真实地模拟现实世界</li>
+<li>容易为人理解</li>
+<li>便于在计算机上实现</li>
+</ul>
+</li>
+<li>数据模型是数据库系统的核心和基础</li>
+</ul>
+<h2 id="2-1、两类数据模型"><a href="#2-1、两类数据模型" class="headerlink" title="2.1、两类数据模型"></a>2.1、两类数据模型</h2><ul>
+<li><strong>概念模型</strong>（信息模型）<ul>
+<li>按用户的观点来对数据和信息建模，主要用于数据库设计</li>
+</ul>
+</li>
+<li><strong>逻辑模型和物理模型</strong><ul>
+<li>逻辑模型主要包括层次模型、网状模型、关系模型、面向对象数据模型、对象关系模型、半结构化数据模型等</li>
+<li>物理模型是对数据最底层的抽象，它描述数据在系统内部的表示方式和存取方法，或在磁盘和磁带上的存储方式和存取方法，是面向计算机系统的。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>把现实事务转化为数据模型的过程：先将现实世界抽象为信息世界，然后将信息世界转换为机器世界。</p>
+</blockquote>
+<h2 id="2-2、概念模型"><a href="#2-2、概念模型" class="headerlink" title="2.2、概念模型"></a>2.2、概念模型</h2><h4 id="1-用途"><a href="#1-用途" class="headerlink" title="1.用途"></a>1.用途</h4><ul>
+<li>概念模型用于信息世界的建模</li>
+<li>是现实世界到机器世界的一个中间层次</li>
+<li>是数据库设计的有力工具</li>
+<li>数据库设计人员和用户之间进行交流的语言</li>
+</ul>
+<h4 id="2-基本要求"><a href="#2-基本要求" class="headerlink" title="2.基本要求"></a>2.基本要求</h4><ul>
+<li>较强的语义表达能力</li>
+<li>简单、清晰、易于用户理解</li>
+</ul>
+<h4 id="3-信息世界中的基本概念"><a href="#3-信息世界中的基本概念" class="headerlink" title="3.信息世界中的基本概念"></a>3.信息世界中的基本概念</h4><ul>
+<li><strong>实体</strong><ul>
+<li>客观存在并可相互区别的事物称为实体</li>
+<li>实体可以是具体的人、事、物，也可以是抽象的概念或联系</li>
+</ul>
+</li>
+<li><strong>属性</strong><ul>
+<li>实体所具有的某一特性称为属性</li>
+<li>一个实体可以由若干个属性来刻画</li>
+</ul>
+</li>
+<li><strong>码</strong><ul>
+<li>唯一标识实体的属性集称为码</li>
+</ul>
+</li>
+<li><strong>实体型</strong><ul>
+<li>用实体名及其属性名集合来抽象和刻画同类实体称为实体型</li>
+</ul>
+</li>
+<li><strong>实体集</strong><ul>
+<li>同一类型实体的集合称为实体集</li>
+</ul>
+</li>
+<li><strong>联系</strong><ul>
+<li>实体内部的联系通常是值组成实体的各属性之间的联系</li>
+<li>实体外部的联系通常是指不同实体集之间的联系</li>
+<li>实体之间的联系有一对一，一对多和多对多等多种类型</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-实体-联系方法（概念模型的表示方法）"><a href="#4-实体-联系方法（概念模型的表示方法）" class="headerlink" title="4.实体-联系方法（概念模型的表示方法）"></a>4.实体-联系方法（概念模型的表示方法）</h4><ul>
+<li>用E-R图来描述现实世界的概念模型，E-R方法也称为E-R模型</li>
+</ul>
+<h2 id="2-3、数据模型的组成要素"><a href="#2-3、数据模型的组成要素" class="headerlink" title="2.3、数据模型的组成要素"></a>2.3、数据模型的组成要素</h2><h4 id="1-组成要素"><a href="#1-组成要素" class="headerlink" title="1.组成要素"></a>1.组成要素</h4><ul>
+<li><strong>数据结构</strong><ul>
+<li><strong>数据结构描述数据库的组成对象以及对象之间的联系</strong></li>
+<li><strong>描述的内容</strong><ul>
+<li>与对象的类型、内容、性质有关</li>
+<li>与数据之间的联系有关</li>
+</ul>
+</li>
+<li><strong>数据结构是对系统静态特性的描述</strong></li>
+</ul>
+</li>
+<li><strong>数据操作</strong><ul>
+<li><strong>定义</strong><ul>
+<li>反映和规定必须遵守的基本的通用的完整性约束</li>
+<li>提供定义完整性约束条件的机制，以反映具体应用所涉及的数据必须遵守的特定的语义约束条件</li>
+</ul>
+</li>
+<li><strong>对数据库中各种对象的实例允许执行的操作的集合，包括操作及有关操作规则</strong></li>
+<li><strong>类型</strong><ul>
+<li>查询</li>
+<li>更新（包括插入、删除、修改）</li>
+</ul>
+</li>
+<li><strong>数据模型必须定义这些操作的确切含义、操作符号、操作规则以及实现操作的语言</strong></li>
+<li><strong>数据操作是对系统动态特性的描述</strong></li>
+</ul>
+</li>
+<li><strong>数据的完整性约束条件</strong><ul>
+<li><strong>数据的完整性约束条件是一组完整性规则</strong></li>
+<li><strong>完整性规则</strong>：给定的数据模型中数据及其联系所具有的制约和依存规则</li>
+<li><strong>作用</strong>：用以限定符合数据模型的数据库状态以及状态的变化，以保证数据的正确、有效和相容</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-4、常用的数据模型"><a href="#2-4、常用的数据模型" class="headerlink" title="2.4、常用的数据模型"></a>2.4、常用的数据模型</h2><ul>
+<li><strong>层次模型</strong>（Hierarchical Model）</li>
+<li><strong>网状模型</strong>（Network Model）</li>
+<li><strong>关系模型</strong>（Relational Model）</li>
+<li><strong>面向对象数据模型</strong>（Object Oriented Data Model）</li>
+<li><strong>对象关系数据模型</strong>（Object Relational Data Model）</li>
+<li><strong>半结构化数据模型</strong>（Semistruture Data Model）</li>
+</ul>
+<h2 id="2-5、层次模型"><a href="#2-5、层次模型" class="headerlink" title="2.5、层次模型"></a>2.5、层次模型</h2><ul>
+<li><strong>层次模型是数据库系统中最早出现的数据库模型</strong></li>
+<li>层次数据库系统的典型代表是IBM公司的IMS（Information Management System）数据库管理系统</li>
+<li>层次模型用树形结构来表示各类实体以及实体间的联系</li>
+</ul>
+<h4 id="判断为层次模型的两个条件："><a href="#判断为层次模型的两个条件：" class="headerlink" title="判断为层次模型的两个条件："></a>判断为层次模型的两个条件：</h4><ul>
+<li>有且只有一个节点没有双亲结点，这个结点称为根节点</li>
+<li>根以外的其他结点有且只有一个双亲结点</li>
+</ul>
+<p>层次模型示例：<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/dimages/Date01/02.jpg" alt="示例图"></p>
+<ul>
+<li>层次模型的数据操纵<ul>
+<li>查询</li>
+<li>插入</li>
+<li>删除</li>
+<li>更新</li>
+</ul>
+</li>
+<li>层次模型的完整性约束条件<ul>
+<li>无相应的双亲结点值不能插入子女结点值</li>
+<li>如果删除双亲结点值，则相应的子女结点值也被同时删除</li>
+<li>更新操作时，应更新所有相应记录，以保证数据的一致性</li>
+</ul>
+</li>
+<li>优点<ul>
+<li>层次模型的数据结构比较简单清晰</li>
+<li>查询效率高，性能优于关系模型，不低于网状模型</li>
+<li>层次数据模型提供良好的完整性支持</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>结点之间的多对多联系表示不自然</li>
+<li>对插入和删除操作的限制多，应用程序的编写比较复杂</li>
+<li>查询子女结点必须通过双亲结点</li>
+<li>层次命令趋于程序化</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-6、网状模型"><a href="#2-6、网状模型" class="headerlink" title="2.6、网状模型"></a>2.6、网状模型</h2><ul>
+<li><p><strong>网状数据库系统采用网状模型作为数据的组织方式</strong></p>
+</li>
+<li><p>典型代表是20世纪70年代由DBTG提出的一个系统方案–DBTG系统，也叫CODASYL</p>
+</li>
+<li><p>实际系统</p>
+<ul>
+<li>Cullinet Software公司的IDMS</li>
+<li>Univac公司的 DMS1100</li>
+<li>Honeywell公司的IDS&#x2F;2</li>
+<li>HP公司的IMAGE</li>
+</ul>
+</li>
+<li><p>网状模型的判断条件：</p>
+<ul>
+<li>允许一个以是的结点无双亲</li>
+<li>一个结点可以有多于一个的双亲</li>
+</ul>
+</li>
+<li><p>网状模型与层次模型的区别</p>
+<ul>
+<li>网状模型允许多个结点没有双亲结点</li>
+<li>网状模型允许结点有多个双亲结点</li>
+<li>网状模型允许两个结点之间有多种关系（复合关系）</li>
+<li>网状模型可以更直接地描述现实世界</li>
+<li>层次模型实际上是网状模型的一个特例</li>
+</ul>
+</li>
+<li><p>优点</p>
+<ul>
+<li>能够更为直观地描述现实世界</li>
+<li>具有良好的性能，存取效率高</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li><p>结构比较复杂，而且随着应用环境的扩大，数据库的结构就变得越来越复杂，</p>
+<p>不利于最终用户掌握</p>
+</li>
+<li><p>DDL、DML语言复杂，用户不容易使用</p>
+</li>
+<li><p>记录之间联系是通过存取路径实现的，用户必须了解系统结构的细节</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-7、关系模型"><a href="#2-7、关系模型" class="headerlink" title="2.7、关系模型"></a>2.7、关系模型</h2><ul>
+<li>关系数据库系统采用关系模型作为数据的组织方式</li>
+<li>1970年美国IBM公司San Jose研究室的研究员E.F.Codd首次提出了数据库系统的关系模型</li>
+<li>计算机厂商新推出的数据库管理系统几乎都支持关系模型</li>
+</ul>
+<h4 id="1-数据结构"><a href="#1-数据结构" class="headerlink" title="1.数据结构"></a>1.数据结构</h4><ul>
+<li><p>关系（Relation）</p>
+<ul>
+<li>一个关系对应通常说的一张表</li>
+</ul>
+</li>
+<li><p>元组（Tuple）</p>
+<ul>
+<li>表中的一行即为一个元组</li>
+</ul>
+</li>
+<li><p>属性（Attribute）</p>
+<ul>
+<li>表中的一列即为一个属性，给每一个属性起一个名称即属性名</li>
+</ul>
+</li>
+<li><p>主码（Key）</p>
+<ul>
+<li>也称为码键。表中的某个属性组，它可以唯一确定一个元组</li>
+</ul>
+</li>
+<li><p>域（Domain）</p>
+<ul>
+<li>是一组具有相同数据类型的值的集合。属性的取值范围来自某个域</li>
+</ul>
+</li>
+<li><p>分量</p>
+<ul>
+<li>元组中的一个属性值</li>
+</ul>
+</li>
+<li><p>关系模式</p>
+<ul>
+<li><p>对关系的描述</p>
+<p>关系名（属性1，属性2，……，属性n）</p>
+<p>学生（学号，姓名，年龄，……）</p>
+</li>
+</ul>
+</li>
+<li><p><strong>关系模型的数据操纵</strong></p>
+<ul>
+<li>查询</li>
+<li>插入</li>
+<li>删除</li>
+<li>更新</li>
+</ul>
+</li>
+<li><p><strong>数据操作是集合操作，操作对象和操作结果是关系</strong></p>
+</li>
+<li><p><strong>存取路径对用户隐蔽，用户只要指出“干什么”，不必详细说明“这么干”</strong></p>
+</li>
+<li><p><strong>关系的完整性约束条件</strong></p>
+<ul>
+<li>实体完整性</li>
+<li>参照完整性</li>
+<li>用户定义的完整性</li>
+</ul>
+</li>
+<li><p>优点</p>
+<ul>
+<li>建立在严格的数学概念的基础上</li>
+<li>概念单一<ul>
+<li>实体和各类联系都用关系来表示</li>
+<li>对数据的检索结果也是关系</li>
+</ul>
+</li>
+<li>关系模型的存取路径对用户透明<ul>
+<li>具有更高的数据独立性，更好的安全保密性</li>
+<li>简化了程序员的工作和数据库开发建立的工作</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li>存取路径对用户透明，查询效率往往不如格式化数据模型</li>
+<li>为提高性能，必须对用户的查询请求进行优化，增加了开发数据库管理系统的难度</li>
+</ul>
+</li>
+</ul>
+<h1 id="3、数据库系统的结构"><a href="#3、数据库系统的结构" class="headerlink" title="3、数据库系统的结构"></a>3、数据库系统的结构</h1><ul>
+<li>从数据库应用开发人员角度看，数据库系统通常采用三级模式结构，是数据库系统内部的系统结构</li>
+<li>从数据库最终用户角度看，数据库系统的结构分为：<ul>
+<li>单用户结构</li>
+<li>主从式结构</li>
+<li>分布式结构</li>
+<li>客户-服务器</li>
+<li>浏览器-应用服务器&#x2F;数据库服务器多层结构等</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-1、数据库系统模式的概念"><a href="#3-1、数据库系统模式的概念" class="headerlink" title="3.1、数据库系统模式的概念"></a>3.1、数据库系统模式的概念</h2><h3 id="1-型和值的概念"><a href="#1-型和值的概念" class="headerlink" title="1.型和值的概念"></a>1.型和值的概念</h3><ul>
+<li>型<ul>
+<li>对某一类数据的结构和属性的说明</li>
+</ul>
+</li>
+<li>值<ul>
+<li>是型的一个具体赋值</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-模式"><a href="#2-模式" class="headerlink" title="2.模式"></a>2.模式</h3><ul>
+<li>数据库逻辑结构和特征的描述</li>
+<li>是型的描述，不涉及具体值</li>
+<li>反映的是数据的结构及其联系</li>
+<li>模式是相对稳定的</li>
+</ul>
+<h3 id="3-实列"><a href="#3-实列" class="headerlink" title="3.实列"></a>3.实列</h3><ul>
+<li>模式的一个具体值</li>
+<li>反映数据库某一时刻的状态</li>
+<li>同一个模式可以有很多实例</li>
+<li>实例随数据库中的数据的更新而变动</li>
+</ul>
+<h2 id="3-2、数据库系统的三级模式结构"><a href="#3-2、数据库系统的三级模式结构" class="headerlink" title="3.2、数据库系统的三级模式结构"></a>3.2、数据库系统的三级模式结构</h2><p>三级模式结构示意图：<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/dimages/Date01/03.jpg" alt="示例图"></p>
+<h3 id="1-模式（也称为逻辑模式）"><a href="#1-模式（也称为逻辑模式）" class="headerlink" title="1.模式（也称为逻辑模式）"></a>1.模式（也称为逻辑模式）</h3><p><strong>定义：</strong></p>
+<ul>
+<li>数据库中全体数据的逻辑结构和特征的描述</li>
+<li>所有用户的公共数据视图</li>
+<li>模式是数据库系统模式结构的中间层，与数据的物理存储细节和硬件环境无关，与具体的应用程序、开发工具及高级程序设计语言无关</li>
+</ul>
+<blockquote>
+<p>注意：一个数据库只有一个模式</p>
+</blockquote>
+<h3 id="2-外模式（也称子模式或用户模式）"><a href="#2-外模式（也称子模式或用户模式）" class="headerlink" title="2.外模式（也称子模式或用户模式）"></a>2.外模式（也称子模式或用户模式）</h3><p><strong>定义：</strong></p>
+<ul>
+<li>数据库用户能看见和使用的局部数据的逻辑结构和特征的描述</li>
+<li>数据库用户的数据视图</li>
+<li>与某一应用有关的数据的逻辑表示</li>
+</ul>
+<blockquote>
+<p>补充：外模式通常是模式的子集。一个数据库可以有多个外模式</p>
+</blockquote>
+<h3 id="3-内模式（也称存储模式）"><a href="#3-内模式（也称存储模式）" class="headerlink" title="3.内模式（也称存储模式）"></a>3.内模式（也称存储模式）</h3><p><strong>定义：</strong></p>
+<ul>
+<li>数据物理结构和存储方式的描述</li>
+<li>数据在数据库内部的组织方式</li>
+</ul>
+<blockquote>
+<p>注意：一个数据库只有一个内模式</p>
+</blockquote>
+<h2 id="3-3、数据库的二级映像功能与数据独立性"><a href="#3-3、数据库的二级映像功能与数据独立性" class="headerlink" title="3.3、数据库的二级映像功能与数据独立性"></a>3.3、数据库的二级映像功能与数据独立性</h2><p>1.外模式&#x2F;模式映像</p>
+<p><strong>概念：当模式改变时，由数据库管理员对各个外模式&#x2F;模式的映像作相应的改变，可以使外模式保持不变。应用程序是依据数据的外模式编写的，从而应用程序必修改，保证了数据和程序的逻辑独立性，简称数据的逻辑独立性。</strong></p>
+<p>2.模式&#x2F;内模式映像</p>
+<p><strong>概念：当数据库的存储结构发生改变时，由数据库管理员对模式&#x2F;内模式映像作相应改变，可以使模式保持不变，从而应用程序也不必改变，。保证了数据和程序的物理独立性，简称数据的物理独立性。</strong></p>
+<h1 id="4、数据库系统的组成"><a href="#4、数据库系统的组成" class="headerlink" title="4、数据库系统的组成"></a>4、数据库系统的组成</h1><ol>
+<li>硬件平台及数据库</li>
+<li>软件</li>
+</ol>
+<p>数据库系统的软件主要包括：</p>
+<ul>
+<li><p>数据库管理系统</p>
+</li>
+<li><p>支持数据库管理系统运行的操作系统</p>
+</li>
+<li><p>具有与数据库接口的高级语言及其编译系统，便于开发应用程序</p>
+</li>
+<li><p>以数据库管理系统为核心的应用开发工具</p>
+</li>
+<li><p>为特定应用环境开发的数据库应用系统</p>
+<p> 3.人员</p>
+</li>
+<li><p>职责：</p>
+<ul>
+<li>决定数据库中的信息内容和结构</li>
+<li>决定数据库的存储结构和存取策略</li>
+<li>定义数据的使用和运行</li>
+<li>监控数据库的使用和运行</li>
+<li>数据库的改进和重组、重构</li>
+</ul>
+</li>
+</ul>
+<h1 id="5、参考"><a href="#5、参考" class="headerlink" title="5、参考"></a>5、参考</h1><blockquote>
+<p>本文参考于《数据库系统概论（第五版）》高等教育出版社，图片也摘自本书。如想更详细了解数据库相关信息可以参阅本书。</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">PG-Code</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/09/14/%E7%AC%AC%E4%B8%80%E7%AB%A0/">http://example.com/2023/09/14/%E7%AC%AC%E4%B8%80%E7%AB%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">戒欲</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%88%9D%E8%AF%86%E6%95%B0%E6%8D%AE%E5%BA%93/">初识数据库</a></div><div class="post_share"><div class="social-share" data-image="/images/head.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/images/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/10/02/CSS-%E4%B8%80%E3%80%81%E5%88%9D%E8%AE%A4%E8%AF%86CSS/" title="初识CSS"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">初识CSS</div></div></a></div><div class="next-post pull-right"><a href="/2023/09/12/%E5%B8%B8%E7%94%A8%E7%9A%84dos%E5%91%BD%E4%BB%A4/" title="常用的dos命令"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">常用的dos命令</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/head.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">PG-Code</div><div class="author-info__description">灵魂栖息地</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/PG-Code6"><i class="fab fa-github"></i><span>未来很短，我们一起走！</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/PG-Code6" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/2512526656@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://blog.csdn.net/m0_75037797?spm=1000.2115.3001.5343" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">1、数据库系统概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E3%80%81%E5%9B%9B%E4%B8%AA%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">1.1、四个基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.1.2.</span> <span class="toc-text">2.数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.1.3.</span> <span class="toc-text">3.数据库管理系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.1.4.</span> <span class="toc-text">4.数据库系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2%E3%80%81%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E6%8A%80%E6%9C%AF%E7%9A%84%E4%BA%A7%E7%94%9F%E5%92%8C%E5%8F%91%E5%B1%95"><span class="toc-number">1.2.</span> <span class="toc-text">1.2、数据管理技术的产生和发展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">1.什么是数据管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E6%8A%80%E6%9C%AF%E7%9A%84%E5%8F%91%E5%B1%95%E8%BF%87%E7%A8%8B"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">2.数据管理技术的发展过程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E4%BA%BA%E5%B7%A5%E7%AE%A1%E7%90%86%E9%98%B6%E6%AE%B5%EF%BC%8820%E4%B8%96%E7%BA%AA50%E5%B9%B4%E4%BB%A3%E4%B8%AD%E4%B9%8B%E5%89%8D%EF%BC%89"><span class="toc-number">1.2.0.2.1.</span> <span class="toc-text">1.人工管理阶段（20世纪50年代中之前）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E9%98%B6%E6%AE%B5%EF%BC%8820%E4%B8%96%E7%BA%AA50%E5%B9%B4%E4%BB%A3%E6%9C%AB%E2%80%9360%E5%B9%B4%E4%BB%A3%E4%B8%AD%EF%BC%89"><span class="toc-number">1.2.0.2.2.</span> <span class="toc-text">2.文件管理阶段（20世纪50年代末–60年代中）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E9%98%B6%E6%AE%B5%EF%BC%8820%E4%B8%96%E7%BA%AA60%E5%B9%B4%E4%BB%A3%E6%9C%AB%E2%80%93%E7%8E%B0%E5%9C%A8%EF%BC%89"><span class="toc-number">1.2.0.2.3.</span> <span class="toc-text">3.数据库系统阶段（20世纪60年代末–现在）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.3.</span> <span class="toc-text">1.3、数据库系统的特点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8C%96"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">1.数据结构化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E7%9A%84%E5%85%B1%E4%BA%AB%E6%80%A7%E9%AB%98%EF%BC%8C%E5%86%97%E4%BD%99%E5%BA%A6%E4%BD%8E%E4%B8%94%E6%98%93%E6%89%A9%E5%85%85"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">2.数据的共享性高，冗余度低且易扩充</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E7%8B%AC%E7%AB%8B%E6%80%A7%E9%AB%98"><span class="toc-number">1.3.0.3.</span> <span class="toc-text">3.数据独立性高</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E7%8B%AC%E7%AB%8B%E6%80%A7%EF%BC%9A"><span class="toc-number">1.3.0.3.1.</span> <span class="toc-text">物理独立性：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E7%8B%AC%E7%AB%8B%E6%80%A7%EF%BC%9A"><span class="toc-number">1.3.0.3.2.</span> <span class="toc-text">逻辑独立性：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%95%B0%E6%8D%AE%E6%9C%89%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%BB%9F%E4%B8%80%E7%AE%A1%E7%90%86%E5%92%8C%E6%8E%A7%E5%88%B6"><span class="toc-number">1.3.0.4.</span> <span class="toc-text">4.数据有数据库管理系统统一管理和控制</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E6%8F%90%E4%BE%9B%E7%9A%84%E6%95%B0%E6%8D%AE%E6%8E%A7%E5%88%B6%E5%8A%9F%E8%83%BD"><span class="toc-number">1.3.0.4.1.</span> <span class="toc-text">数据库管理系统提供的数据控制功能</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">1.3.1.</span> <span class="toc-text">小结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2%E3%80%81%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">2、数据模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1%E3%80%81%E4%B8%A4%E7%B1%BB%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.1.</span> <span class="toc-text">2.1、两类数据模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2%E3%80%81%E6%A6%82%E5%BF%B5%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.2.</span> <span class="toc-text">2.2、概念模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%94%A8%E9%80%94"><span class="toc-number">2.2.0.1.</span> <span class="toc-text">1.用途</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%9F%BA%E6%9C%AC%E8%A6%81%E6%B1%82"><span class="toc-number">2.2.0.2.</span> <span class="toc-text">2.基本要求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BF%A1%E6%81%AF%E4%B8%96%E7%95%8C%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">2.2.0.3.</span> <span class="toc-text">3.信息世界中的基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%AE%9E%E4%BD%93-%E8%81%94%E7%B3%BB%E6%96%B9%E6%B3%95%EF%BC%88%E6%A6%82%E5%BF%B5%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95%EF%BC%89"><span class="toc-number">2.2.0.4.</span> <span class="toc-text">4.实体-联系方法（概念模型的表示方法）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3%E3%80%81%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%BB%84%E6%88%90%E8%A6%81%E7%B4%A0"><span class="toc-number">2.3.</span> <span class="toc-text">2.3、数据模型的组成要素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%BB%84%E6%88%90%E8%A6%81%E7%B4%A0"><span class="toc-number">2.3.0.1.</span> <span class="toc-text">1.组成要素</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4%E3%80%81%E5%B8%B8%E7%94%A8%E7%9A%84%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.4.</span> <span class="toc-text">2.4、常用的数据模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5%E3%80%81%E5%B1%82%E6%AC%A1%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.5.</span> <span class="toc-text">2.5、层次模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E4%B8%BA%E5%B1%82%E6%AC%A1%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%9D%A1%E4%BB%B6%EF%BC%9A"><span class="toc-number">2.5.0.1.</span> <span class="toc-text">判断为层次模型的两个条件：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6%E3%80%81%E7%BD%91%E7%8A%B6%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.6.</span> <span class="toc-text">2.6、网状模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7%E3%80%81%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.7.</span> <span class="toc-text">2.7、关系模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">2.7.0.1.</span> <span class="toc-text">1.数据结构</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">3、数据库系统的结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">3.1.</span> <span class="toc-text">3.1、数据库系统模式的概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9E%8B%E5%92%8C%E5%80%BC%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">3.1.1.</span> <span class="toc-text">1.型和值的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.1.2.</span> <span class="toc-text">2.模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%9E%E5%88%97"><span class="toc-number">3.1.3.</span> <span class="toc-text">3.实列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%89%E7%BA%A7%E6%A8%A1%E5%BC%8F%E7%BB%93%E6%9E%84"><span class="toc-number">3.2.</span> <span class="toc-text">3.2、数据库系统的三级模式结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B9%9F%E7%A7%B0%E4%B8%BA%E9%80%BB%E8%BE%91%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="toc-number">3.2.1.</span> <span class="toc-text">1.模式（也称为逻辑模式）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A4%96%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B9%9F%E7%A7%B0%E5%AD%90%E6%A8%A1%E5%BC%8F%E6%88%96%E7%94%A8%E6%88%B7%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="toc-number">3.2.2.</span> <span class="toc-text">2.外模式（也称子模式或用户模式）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%86%85%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B9%9F%E7%A7%B0%E5%AD%98%E5%82%A8%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="toc-number">3.2.3.</span> <span class="toc-text">3.内模式（也称存储模式）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BA%8C%E7%BA%A7%E6%98%A0%E5%83%8F%E5%8A%9F%E8%83%BD%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%8B%AC%E7%AB%8B%E6%80%A7"><span class="toc-number">3.3.</span> <span class="toc-text">3.3、数据库的二级映像功能与数据独立性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">4.</span> <span class="toc-text">4、数据库系统的组成</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5%E3%80%81%E5%8F%82%E8%80%83"><span class="toc-number">5.</span> <span class="toc-text">5、参考</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/05/JavaScipt-%E8%BF%90%E7%AE%97%E7%AC%A6/" title="运算符">运算符</a><time datetime="2023-10-05T11:06:42.360Z" title="发表于 2023-10-05 19:06:42">2023-10-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/05/JavaScipt-%E8%AF%AD%E5%8F%A5/" title="语句">语句</a><time datetime="2023-10-05T11:06:42.359Z" title="发表于 2023-10-05 19:06:42">2023-10-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/05/JavaScipt-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="数据类型">数据类型</a><time datetime="2023-10-05T11:06:42.357Z" title="发表于 2023-10-05 19:06:42">2023-10-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/05/JavaScipt-%E5%87%BD%E6%95%B0/" title="函数">函数</a><time datetime="2023-10-05T11:06:42.355Z" title="发表于 2023-10-05 19:06:42">2023-10-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/05/JavaScipt-%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F/" title="变量与常量">变量与常量</a><time datetime="2023-10-05T11:06:42.353Z" title="发表于 2023-10-05 19:06:42">2023-10-05</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/images/pg3.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 By PG-Code</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>function loadWaline () {
+  function initWaline () {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'talk.pg-code-go.com',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: true,
+    }, null))
+  }
+
+  if (typeof Waline === 'object') initWaline()
+  else {
+    getCSS('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.css').then(() => {
+      getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.min.js').then(initWaline)
+    })
+  }
+}
+
+if ('Waline' === 'Waline' || !false) {
+  if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="60198" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true"> </div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="30" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
